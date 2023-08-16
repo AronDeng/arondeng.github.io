@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>K-Means算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+  <meta name="description" content="1. 基本原理1）K-means K-means算法是根据距离划分组的无监督聚类算法，对于给定的样本集，按照样本间的距离大小，将样本划分为K个簇，使得簇内的点尽量紧密相连，而簇间的点距离尽量大  2）一些概念 KMeans 算法将一组 N 个样本的特征矩阵 X 划分为 K 个无交集的簇，直观上来看是簇是一组一组聚集在一起的数据，在一个簇中的数据就认为是同一类。簇就是聚类的结果表现。 簇中所有数据的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K-Means算法">
+<meta property="og:url" content="http://example.com/2023/08/16/K-Means%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 基本原理1）K-means K-means算法是根据距离划分组的无监督聚类算法，对于给定的样本集，按照样本间的距离大小，将样本划分为K个簇，使得簇内的点尽量紧密相连，而簇间的点距离尽量大  2）一些概念 KMeans 算法将一组 N 个样本的特征矩阵 X 划分为 K 个无交集的簇，直观上来看是簇是一组一组聚集在一起的数据，在一个簇中的数据就认为是同一类。簇就是聚类的结果表现。 簇中所有数据的">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:\Alogrith\%E2%98%85%E8%81%8C%E4%B8%9A\%E6%8A%80%E8%83%BD\%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98\image\12.png">
+<meta property="article:published_time" content="2023-08-16T09:34:41.852Z">
+<meta property="article:modified_time" content="2023-08-16T10:25:22.192Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="“人工智能”">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\Alogrith\%E2%98%85%E8%81%8C%E4%B8%9A\%E6%8A%80%E8%83%BD\%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98\image\12.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -132,36 +139,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-K-Means算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/08/16/K-Means%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2023-08-16T09:34:41.852Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/08/16/K-Means%E7%AE%97%E6%B3%95/">K-Means算法</a>
+    <h1 class="article-title" itemprop="name">
+      K-Means算法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/08/16/K-Means%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2023-08-16T09:34:41.852Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-基本原理"><a href="#1-基本原理" class="headerlink" title="1. 基本原理"></a>1. 基本原理</h4><h5 id="1）K-means"><a href="#1）K-means" class="headerlink" title="1）K-means"></a>1）K-means</h5><ul>
+<li>K-means算法是<strong>根据距离划分组</strong>的<strong>无监督聚类算法</strong>，对于给定的样本集，按照样本间的距离大小，将样本划分为K个簇，使得簇内的点尽量紧密相连，而簇间的点距离尽量大</li>
+</ul>
+<h5 id="2）一些概念"><a href="#2）一些概念" class="headerlink" title="2）一些概念"></a>2）一些概念</h5><ul>
+<li>KMeans 算法将一组 N 个样本的<strong>特征矩阵 X</strong> 划分为 <strong>K 个无交集的簇</strong>，直观上来看是簇是一组一组聚集在一起的数据，在一个簇中的数据就认为是同一类。簇就是<strong>聚类的结果表现</strong>。</li>
+<li>簇中所有<strong>数据的均值</strong>通常被称为这个簇的“<strong>质心</strong>”（centroids）</li>
+<li>簇的个数 <strong>K 是一个超参数</strong>，需要我们人为输入来确定。KMeans 的核心任务就是根据我们设定好的 K，找出 K 个最优的质心，并将离这些质心最近的数据分别分配到这些质心代表的簇中去</li>
+</ul>
+<h5 id="3）算法"><a href="#3）算法" class="headerlink" title="3）算法"></a>3）算法</h5><ul>
+<li>创建 k 个点作为初始质心（通常是随机选择）</li>
+<li>计算每个对象与各个质心之间的距离，把每个对象分配给距离它最近的 质心。质心 以及分配给它们的对象就代表一个聚类。</li>
+<li>一旦全部对象都被分配了，每个聚类的质心会根据聚类中现有的对象被重新计算。</li>
+<li>这个过程将不断重复直到满足某个终止条件。终止条件可以是以下任何一个：<ul>
+<li>没有（或最小数目）对象被重新分配给不同的聚类。</li>
+<li>没有（或最小数目）质心 再发生变化。</li>
+<li>簇内平方和局部最小</li>
+</ul>
+</li>
+</ul>
+<h5 id="4）簇内平方和的定义"><a href="#4）簇内平方和的定义" class="headerlink" title="4）簇内平方和的定义"></a>4）簇内平方和的定义</h5><ul>
+<li><p>对于一个簇来说，所有样本点到质心的距离之和越小，我们就认为这个簇中的样本越相似，簇内差异就越小。而距离的衡量方法有多种，令：</p>
+<ul>
+<li>x  表示簇中的一个样本点;</li>
+<li>μ 表示该簇中的质心;</li>
+<li>n  表示每个样本点中的特征数目;</li>
+<li>i  表示组成点 x 的每个特征编号;</li>
+</ul>
+</li>
+<li><p>一些距离表示</p>
+<ul>
+<li><p>欧几里得距离</p>
+<script type="math/tex; mode=display">
+d(x,\mu )=\sqrt{\sum_{i=1}^{n}(x_i-\mu)^2 }</script></li>
+<li><p>曼哈顿距离</p>
+<script type="math/tex; mode=display">
+d(x,\mu )=\sum_{i=1}^{n}(|x_i-\mu |)</script></li>
+<li><p>余弦距离</p>
+<script type="math/tex; mode=display">
+cos\theta  =\frac{\sum_{i=1}^{n}(x_i*\mu)}{\sqrt{ {\textstyle \sum_{1}^{n}(x_i)^2} }*\sqrt{ {\textstyle \sum_{1}^{n}\mu ^2} }  }</script></li>
+</ul>
+</li>
+<li><p>基于欧氏距离的<strong>簇内平方和</strong>（Cluster Sum of Square）</p>
+<script type="math/tex; mode=display">
+CSS =\sum_{j=0}^{m}\sum_{i=1}^{n}(x_i-\mu _j)^2</script><ul>
+<li>m 为一个簇中样本的个数</li>
+<li>j  是每个样本的编号</li>
+</ul>
+</li>
+<li><p><strong>整体平方和</strong>（Total Cluster Sum of Square）又称 total inertia</p>
+<script type="math/tex; mode=display">
+Total\space Inertia =\sum_{l=1}^{k}CSS_l</script><ul>
+<li>Total Inertia <strong>越小</strong>，代表着每个簇内样本越相似，<strong>聚类的效果就越好</strong></li>
+<li>在质心不断变化不断迭代的过程中，总体平方和是越来越小的。当整体平方和最小的时候，质心就不再发生变化了</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-sklearn实现"><a href="#2-sklearn实现" class="headerlink" title="2. sklearn实现"></a>2. sklearn实现</h4><h5 id="1）参数"><a href="#1）参数" class="headerlink" title="1）参数"></a>1）参数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">sklearn</span>.cluster.KMeans (</span><br><span class="line">    n_clusters=<span class="number">8</span>, <span class="comment"># 簇的个数，默认为8</span></span><br><span class="line">    init=<span class="string">&#x27;k-means++&#x27;</span>, </span><br><span class="line">    n_init=<span class="number">10</span>, </span><br><span class="line">    max_iter=<span class="number">300</span>, </span><br><span class="line">    tol=<span class="number">0.0001</span>,</span><br><span class="line">	precompute_distances=<span class="string">&#x27;auto&#x27;</span>, </span><br><span class="line">    verbose=<span class="number">0</span>, 	</span><br><span class="line">    random_state=<span class="literal">None</span>,</span><br><span class="line">	copy_x=<span class="literal">True</span>,</span><br><span class="line">	n_jobs=<span class="literal">None</span>,</span><br><span class="line">	algorithm=<span class="string">&#x27;auto&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>init &amp; n_init &amp; random_state：初始质心选择</strong></p>
+<ul>
+<li><strong>init</strong><ul>
+<li>初始化质心的方法，默认”<strong>k-means++</strong>“</li>
+<li>输入”k-means++”：一种为 K 均值聚类选择初始聚类中心的聪明的办法，以加速收敛</li>
+<li>如果输入了 n 维数组，数组的形状应该是(n_clusters，n_features)并给出初始质心</li>
+</ul>
+</li>
+<li><strong>n_init</strong><ul>
+<li>使用不同的质心随机初始化的种子来运行 k-means 算法的次数，默认10。最终结果会是基于 Inertia 来计算的</li>
+<li>n_init 次连续运行后的最佳输出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>max_iter &amp; tol：让迭代停下来</strong></p>
+<ul>
+<li>max_iter：整数，默认300. 单次运行kmeans允许的最大迭代次数</li>
+<li>tol：浮点数，默认1e-4. 两次迭代间Interia下降的量，如果小于tol所设定的值，迭代就会停下</li>
+</ul>
+</li>
+</ul>
+<h5 id="2）属性"><a href="#2）属性" class="headerlink" title="2）属性"></a>2）属性</h5><ul>
+<li><strong>cluster.labels_</strong><ul>
+<li>KMeans 因为并不需要建立模型或者预测结果，因此我们只需要 fit 就能够得到聚类结果了</li>
+<li>KMeans 也有接口 predict 和 fit_predict:<ul>
+<li>predict 表示学习数据 X 并对 X 的类进行预测（对 分类器. fit() 之后，再预测)</li>
+<li>fit_predict 不需要 分类器. fit() 之后都可以预测</li>
+<li>对于全数据而言，<strong>分类器. fit(). predict 的结果 = 分类器. fit<em>predict(X) = cluster. labels</em></strong></li>
+</ul>
+</li>
+<li>当我们<strong>数据量非常大</strong>的时候，为了提高模型学习效率，我们可以使用部分数据来帮助我们确认质心剩下的数据的聚类结果，使用 <strong>predict</strong> 来调用</li>
+</ul>
+</li>
+<li><strong>cluster.cluster<em>centers</em></strong><ul>
+<li>查看质心</li>
+</ul>
+</li>
+<li><strong>cluster.inertia_</strong><ul>
+<li>查看总距离平方和</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-聚类算法的模型评估指标—轮廓系数"><a href="#3-聚类算法的模型评估指标—轮廓系数" class="headerlink" title="3. 聚类算法的模型评估指标—轮廓系数"></a>3. 聚类算法的模型评估指标—轮廓系数</h4><h5 id="1）聚类模型难以评估"><a href="#1）聚类模型难以评估" class="headerlink" title="1）聚类模型难以评估"></a>1）聚类模型难以评估</h5><ul>
+<li>聚类模型的结果不是某种标签输出，并且聚类的结果是不确定的，其<strong>优劣</strong>由<strong>业务需求</strong>或者<strong>算法需求</strong>来决定，并且<strong>没有永远的正确答案</strong></li>
+<li>我们就可以通过衡量簇内差异来衡量聚类的效果。<strong>Inertia</strong> 是用距离来衡量簇内差异的指标，因此，可以使用 Inertia 来作为聚类的衡量指标，Inertia 越小模型越好。但是这个指标的<strong>缺点和极限太大</strong><ul>
+<li>它不是有界的。我们只知道，Inertia 是越小越好，是 0 最好，但我们不知道，一个较小的Inertia究竟有没有达到模型的极限，能否继续提高</li>
+<li>它的计算太容易受到特征数目的影响，数据维度很大的时候，Inertia 的计算量会陷入维度诅咒之中，计算量会爆炸，不适合用来一次次评估模型</li>
+<li>它会受到超参数 K 的影响，在我们之前的尝试中其实我们已经发现，随着 K 越大，Inertia 注定会越来越小，但这并不代表模型的效果越来越好了</li>
+<li>Inertia 作为评估指标，会让聚类算法在一些细长簇，环形簇，或者不规则形状的流形时表现不佳</li>
+</ul>
+</li>
+</ul>
+<h5 id="2）轮廓系数"><a href="#2）轮廓系数" class="headerlink" title="2）轮廓系数"></a>2）轮廓系数</h5><ul>
+<li><p>能够衡量</p>
+<ul>
+<li><strong>样本与其自身所在的簇中的其他样本的相似度 a，等于样本与同一簇中所有其他点之间的平均距离</strong></li>
+<li><strong>样本与其他簇中的样本的相似度 b，等于样本与下一个最近的簇中的所有点之间的平均距离</strong></li>
+</ul>
+</li>
+<li><p>单个样本的轮廓系数计算为</p>
+<script type="math/tex; mode=display">
+s=\frac{b-a}{max(a,b)}</script><p>解析为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l} 
+s=  
+  \left\{\begin{matrix} 
+  1-a/b, \space\space \space  if\space a \lt b \\ 
+  0, \space\space \space \space \space \space \space \space \space \space \space \space \space   if\space a = b  \\ 
+  b/a-1, \space\space \space  if\space a \gt b  
+\end{matrix}\right.    
+\end{array}</script></li>
+<li><p>轮廓系数范围是 <strong>(-1,1)</strong></p>
+<ul>
+<li>轮廓系数越<strong>接近 1</strong>：样本与自己<strong>所在的簇</strong>中的样本很<strong>相似</strong>，并且与其他簇中的样本不相似。</li>
+<li>轮廓系数为 <strong>0</strong> 时：两个簇中的样本相似度一致，<strong>两个簇本应该是一个簇</strong></li>
+<li>轮廓系数为<strong>负</strong>时：<strong>样本点与簇外的样本更相似</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="3）基于轮廓系数来选择-n-clusters"><a href="#3）基于轮廓系数来选择-n-clusters" class="headerlink" title="3）基于轮廓系数来选择 n_clusters"></a>3）基于轮廓系数来选择 n_clusters</h5><p>​    通常会绘制<strong>轮廓系数分布图</strong>和<strong>聚类后的数据分布图</strong>来选择我们的<strong>最佳 n_clusters</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导包</span></span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> silhouette_samples, silhouette_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment">#自己创建数据集</span></span><br><span class="line">X, y = make_blobs(n_samples=<span class="number">500</span>,n_features=<span class="number">2</span>,centers=<span class="number">4</span>,random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">score=[] <span class="comment"># 存储 所有样本的轮廓系数均值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#将k值从2变化到20</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">20</span>):</span><br><span class="line">    cluster= KMeans(n_clusters=i, random_state=<span class="number">0</span>).fit(X)</span><br><span class="line">    score.append(silhouette_score(X,cluster.labels_))  <span class="comment">#计算所有样本的轮廓系数均值</span></span><br><span class="line">                 </span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="number">2</span>,<span class="number">20</span>),score)</span><br><span class="line"><span class="comment">#给k最大的位置加虚线   #idxmax()[] 取最大索引  因为这边从k=2开始 所以+2</span></span><br><span class="line">plt.axvline(pd.DataFrame(score).idxmax()[<span class="number">0</span>]+<span class="number">2</span>,ls=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据所得到的图，选择轮廓系数均值最高的 k 值，即 n_clusters</span></span><br></pre></td></tr></table></figure>
+<p><img src="D:\Alogrith\★职业\技能\数据挖掘\image\12.png" alt="12"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -173,19 +319,96 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/08/16/K-Means%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -208,8 +431,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
